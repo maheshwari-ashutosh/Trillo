@@ -11,6 +11,43 @@
         <title>trillo &mdash; Your all-in-one booking app</title>
     </head>
     <body>
-        
+        <div class="container">
+            <header class="header">
+                <img src="img/logo.png" alt="Trillo Logo" class="header__logo">
+                <div class="searchbar">
+                    <input type="search" class="searchbar__input" placeholder="Search Hotel">
+                    <button class="searchbar__icon-box">
+                        <svg class="searchbar__icon">
+                            <use xlink:href="img/symbol-defs.svg#icon-magnifying-glass"></use>
+                        </svg>
+                    </button>
+                </div>
+                <nav class="user-nav">
+                    <div class="user-nav__icon-box">
+                        <svg class="user-nav__icon">
+                            <use xlink:href="img/symbol-defs.svg#icon-bookmark"></use>
+                        </svg>
+                        <span class="user-nav__notification">13</span>
+                    </div>
+                    <div class="user-nav__icon-box">
+                        <svg class="user-nav__icon">
+                            <use xlink:href="img/symbol-defs.svg#icon-chat"></use>
+                        </svg>
+                        <span class="user-nav__notification">7</span>
+                    </div>
+                    <div class="user-nav__profile">
+                        <img src="img/user.jpg" alt="profile pic" class="user-nav__profile-pic">
+                        <p class="user-nav__profile-name">Ashutosh</p>
+                    </div>
+                </nav>
+            </header>
+            <div class="content">
+                <div class="sidebar">
+                    Sidebar
+                </div>
+                <main class="hotel-view">
+                    Main hotel view
+                </main>
+        </div>
     </body>
 </html>
