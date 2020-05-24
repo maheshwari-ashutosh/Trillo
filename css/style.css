@@ -132,8 +132,8 @@ html {
     justify-content: center;
     padding: 1rem;
     position: absolute;
-    top: 1.75rem;
-    right: .5rem; }
+    top: 1rem;
+    right: 1rem; }
   .user-nav__profile {
     display: flex;
     align-items: center;
@@ -146,3 +146,56 @@ html {
       color: black;
       font-size: 1.6rem;
       margin-left: 1rem; }
+
+.sidebar {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-between;
+  height: 80rem; }
+
+.side-nav {
+  list-style: none;
+  color: white;
+  font-size: 1.4rem;
+  margin-top: 3rem;
+  text-transform: uppercase; }
+  .side-nav__item {
+    padding: 2rem 3rem;
+    position: relative;
+    cursor: pointer; }
+    .side-nav__item:not(:last-child) {
+      margin-bottom: .5rem; }
+  .side-nav__item::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: .5rem;
+    background-color: var(--color-primary);
+    transform: scaleY(0);
+    transition: transform 0.2s, width 0.4s 0.2s cubic-bezier(1, 0, 0, 1);
+    backface-visibility: hidden; }
+  .side-nav__item:active::before {
+    background-color: var(--color-primary-light); }
+  .side-nav__item:hover::before, .side-nav__item--active::before {
+    transform: scaleY(1);
+    width: 100%;
+    backface-visibility: hidden; }
+  .side-nav__link:link, .side-nav__link:visited {
+    text-decoration: none;
+    color: var(--color-grey-light-2);
+    display: flex;
+    align-items: center;
+    position: relative;
+    z-index: 10;
+    backface-visibility: hidden; }
+  .side-nav__icon {
+    width: 2rem;
+    height: 2rem;
+    fill: currentColor;
+    margin-right: 2rem; }
+
+.legal {
+  text-align: center;
+  font-size: 1.4rem; }
