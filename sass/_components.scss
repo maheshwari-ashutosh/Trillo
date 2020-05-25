@@ -10,16 +10,16 @@
   flex: 0 1 40%;
   // background-color: green;
   justify-content: center;
-  
+
   &__input {
-    padding: .5rem 1.5rem;
+    padding: 0.5rem 1.5rem;
     font-family: inherit;
     font-size: 1.6rem;
     width: 90%;
     background-color: var(--color-grey-light-2);
     border: none;
     border-radius: 100px;
-    transition: all .3s;
+    transition: all 0.3s;
     // margin-right: -2rem;
     &::-webkit-input-placeholder {
       color: var(--color-grey-light-4);
@@ -44,7 +44,6 @@
     // border-radius: 50%;
     fill: var(--color-grey-dark-2);
   }
-
 }
 
 .user-nav {
@@ -53,7 +52,7 @@
   // background-color: red;
 
   & > * {
-    padding: .5rem 2rem;
+    padding: 0.5rem 2rem;
     cursor: pointer;
     color: white;
   }
@@ -62,7 +61,6 @@
     background-color: var(--color-grey-light-3);
   }
 
-  
   &__icon-box {
     display: flex;
     position: relative;
@@ -72,7 +70,7 @@
   &__icon {
     width: 2.5rem;
     height: 2.5rem;
-    fill: var(  --color-grey-dark-2);
+    fill: var(--color-grey-dark-2);
   }
 
   &__notification {
@@ -114,7 +112,6 @@
   display: flex;
   flex-flow: column nowrap;
   justify-content: space-between;
-  height: 80rem;
 }
 
 .side-nav {
@@ -128,7 +125,7 @@
     padding: 2rem 3rem;
     position: relative;
     &:not(:last-child) {
-      margin-bottom: .5rem;
+      margin-bottom: 0.5rem;
     }
     cursor: pointer;
   }
@@ -139,11 +136,10 @@
     top: 0;
     left: 0;
     height: 100%;
-    width: .5rem;
+    width: 0.5rem;
     background-color: var(--color-primary);
     transform: scaleY(0);
-    transition: transform .2s,
-                width .4s .2s cubic-bezier(1,0,0,1);
+    transition: transform 0.2s, width 0.4s 0.2s cubic-bezier(1, 0, 0, 1);
     backface-visibility: hidden;
   }
 
@@ -166,13 +162,13 @@
     align-items: center;
     position: relative;
     z-index: 10;
-    backface-visibility: hidden;  
+    backface-visibility: hidden;
   }
 
   &__icon {
     width: 2rem;
     height: 2rem;
-    fill:currentColor;
+    fill: currentColor;
     margin-right: 2rem;
   }
 }
@@ -183,4 +179,196 @@
 .legal {
   text-align: center;
   font-size: 1.4rem;
+}
+
+////////////////////////
+//// gallery
+
+.gallery {
+  display: flex;
+
+  &__picture img {
+    width: 100%;
+    display: block;
+  }
+}
+
+////////////////////////
+//// overview
+
+@keyframes popcontinuous {
+  from {
+    transform: scale(1.03);
+  }
+
+  50% {
+    transform: scale(1);
+  }
+
+  to {
+    transform: scale(1.03);
+  }
+}
+
+.overview {
+  display: flex;  
+  border-bottom: 1px solid var(--color-grey-light-4);
+  align-items: center;
+  
+  &__hotel-name {
+    text-transform: uppercase;
+    margin: 0 2rem;
+  }
+
+  &__rating {
+    display: flex;
+    margin-right: auto;
+  }
+
+  &__icon--star {
+    display: flex;
+    height: 1.75rem;
+    width: 1.75rem;
+    fill: var(--color-primary);
+  }
+
+  &__location {
+    display: flex;
+    color: var(--color-primary);
+    cursor: pointer;
+    backface-visibility: hidden;
+    
+    &--icon {
+      height: 1.75rem;
+      width: 1.75rem;
+      fill: currentColor;
+      backface-visibility: hidden;
+    }
+
+    &--name {
+      font-size: 1.4rem;
+      padding-bottom: .5rem ;
+      border-bottom: 1px solid currentColor;
+      backface-visibility: hidden;
+    }
+
+    &:active {
+      animation: popcontinuous .5s infinite;
+      backface-visibility: hidden;
+    }
+  }
+
+  &__score {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    margin-left: 2rem ;
+    padding: 1.5rem;
+    background-color: var(--color-primary);
+    align-self: stretch;
+    font-size: 1.2rem;
+    color: #fff;
+    &--value {
+    }
+
+    &--votes {
+      text-transform: uppercase;
+    }
+  }
+}
+
+/////////////////////////
+//////// description
+
+.description {
+  display: flex;
+  padding: 3rem;
+}
+
+///////////////////////
+/////// details
+
+.details {
+  flex: 0 0 60%;
+  margin-right: 3rem;
+  padding: 3rem;
+  background-color: var(--color-grey-light-1);
+  box-shadow: 0 2rem 6rem rgba(0,0,0,.2);
+  font-size: 1.4rem;
+
+  &__paragraph {
+    font-size: 1.4rem;
+  }
+
+  .paragraph {
+    &:not(:last-of-type) {
+      margin-bottom: 2rem;
+    }
+  }
+
+  &__facilities {
+
+  }
+
+  &__list {
+    margin: 3rem 0;
+    display: flex;
+    list-style: none;
+    flex-flow: wrap;
+    border-top: 2px solid var(--color-grey-light-2);
+    border-bottom: 2px solid var(--color-grey-light-2);
+    padding: 3rem 0;
+  }
+
+  &__item::before{
+    content: "";
+    display: inline-block;
+    background-color: var(--color-primary);
+    width: 1.5rem;
+    height: 1.5rem;
+    -webkit-mask-image: url(../img/chevron-thin-right.svg);
+    -webkit-mask-size: cover;
+    margin-right: .7rem;
+  }
+
+  &__item {
+    flex: 0 0 50%;
+    margin-bottom: 2.5rem;
+    &:nth-last-child(2),
+    &:last-child {
+      margin-bottom: 0;
+    }
+    // margin-bottom: 2.5rem;
+    display: flex;
+    align-items: center;
+  } 
+
+  &__recommendation {
+    display: flex;
+    align-items: center;
+
+    &--message {
+      margin-right: auto;
+    }
+
+    &--img {
+      height: 3.5rem;
+      width: 3.5rem;
+      border-radius: 50%;
+      box-sizing: content-box;
+      &:not(:first-child) {
+        margin-left: -1rem;
+      }
+      border: 3px solid var(--color-grey-light-1);
+    }
+  }
+}
+
+
+//////////////////////
+/////// reviews
+
+.reviews {
+  flex: 1;
 }

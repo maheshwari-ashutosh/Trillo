@@ -58,7 +58,8 @@ html {
   background-color: #fff;
   display: flex;
   justify-content: space-between;
-  align-items: center; }
+  align-items: center;
+  border-bottom: 1px solid var(--color-grey-light-4); }
 
 .content {
   display: flex;
@@ -82,14 +83,14 @@ html {
   flex: 0 1 40%;
   justify-content: center; }
   .searchbar__input {
-    padding: .5rem 1.5rem;
+    padding: 0.5rem 1.5rem;
     font-family: inherit;
     font-size: 1.6rem;
     width: 90%;
     background-color: var(--color-grey-light-2);
     border: none;
     border-radius: 100px;
-    transition: all .3s; }
+    transition: all 0.3s; }
     .searchbar__input::-webkit-input-placeholder {
       color: var(--color-grey-light-4); }
     .searchbar__input:focus {
@@ -109,7 +110,7 @@ html {
   display: flex;
   align-items: stretch; }
   .user-nav > * {
-    padding: .5rem 2rem;
+    padding: 0.5rem 2rem;
     cursor: pointer;
     color: white; }
   .user-nav > *:hover {
@@ -150,8 +151,7 @@ html {
 .sidebar {
   display: flex;
   flex-flow: column nowrap;
-  justify-content: space-between;
-  height: 80rem; }
+  justify-content: space-between; }
 
 .side-nav {
   list-style: none;
@@ -164,14 +164,14 @@ html {
     position: relative;
     cursor: pointer; }
     .side-nav__item:not(:last-child) {
-      margin-bottom: .5rem; }
+      margin-bottom: 0.5rem; }
   .side-nav__item::before {
     content: "";
     position: absolute;
     top: 0;
     left: 0;
     height: 100%;
-    width: .5rem;
+    width: 0.5rem;
     background-color: var(--color-primary);
     transform: scaleY(0);
     transition: transform 0.2s, width 0.4s 0.2s cubic-bezier(1, 0, 0, 1);
@@ -199,3 +199,120 @@ html {
 .legal {
   text-align: center;
   font-size: 1.4rem; }
+
+.gallery {
+  display: flex; }
+  .gallery__picture img {
+    width: 100%;
+    display: block; }
+
+@keyframes popcontinuous {
+  from {
+    transform: scale(1.03); }
+  50% {
+    transform: scale(1); }
+  to {
+    transform: scale(1.03); } }
+
+.overview {
+  display: flex;
+  border-bottom: 1px solid var(--color-grey-light-4);
+  align-items: center; }
+  .overview__hotel-name {
+    text-transform: uppercase;
+    margin: 0 2rem; }
+  .overview__rating {
+    display: flex;
+    margin-right: auto; }
+  .overview__icon--star {
+    display: flex;
+    height: 1.75rem;
+    width: 1.75rem;
+    fill: var(--color-primary); }
+  .overview__location {
+    display: flex;
+    color: var(--color-primary);
+    cursor: pointer;
+    backface-visibility: hidden; }
+    .overview__location--icon {
+      height: 1.75rem;
+      width: 1.75rem;
+      fill: currentColor;
+      backface-visibility: hidden; }
+    .overview__location--name {
+      font-size: 1.4rem;
+      padding-bottom: .5rem;
+      border-bottom: 1px solid currentColor;
+      backface-visibility: hidden; }
+    .overview__location:active {
+      animation: popcontinuous .5s infinite;
+      backface-visibility: hidden; }
+  .overview__score {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    margin-left: 2rem;
+    padding: 1.5rem;
+    background-color: var(--color-primary);
+    align-self: stretch;
+    font-size: 1.2rem;
+    color: #fff; }
+    .overview__score--votes {
+      text-transform: uppercase; }
+
+.description {
+  display: flex;
+  padding: 3rem; }
+
+.details {
+  flex: 0 0 60%;
+  margin-right: 3rem;
+  padding: 3rem;
+  background-color: var(--color-grey-light-1);
+  box-shadow: 0 2rem 6rem rgba(0, 0, 0, 0.2);
+  font-size: 1.4rem; }
+  .details__paragraph {
+    font-size: 1.4rem; }
+  .details .paragraph:not(:last-of-type) {
+    margin-bottom: 2rem; }
+  .details__list {
+    margin: 3rem 0;
+    display: flex;
+    list-style: none;
+    flex-flow: wrap;
+    border-top: 2px solid var(--color-grey-light-2);
+    border-bottom: 2px solid var(--color-grey-light-2);
+    padding: 3rem 0; }
+  .details__item::before {
+    content: "";
+    display: inline-block;
+    background-color: var(--color-primary);
+    width: 1.5rem;
+    height: 1.5rem;
+    -webkit-mask-image: url(../img/chevron-thin-right.svg);
+    -webkit-mask-size: cover;
+    margin-right: .7rem; }
+  .details__item {
+    flex: 0 0 50%;
+    margin-bottom: 2.5rem;
+    display: flex;
+    align-items: center; }
+    .details__item:nth-last-child(2), .details__item:last-child {
+      margin-bottom: 0; }
+  .details__recommendation {
+    display: flex;
+    align-items: center; }
+    .details__recommendation--message {
+      margin-right: auto; }
+    .details__recommendation--img {
+      height: 3.5rem;
+      width: 3.5rem;
+      border-radius: 50%;
+      box-sizing: content-box;
+      border: 3px solid var(--color-grey-light-1); }
+      .details__recommendation--img:not(:first-child) {
+        margin-left: -1rem; }
+
+.reviews {
+  flex: 1; }
