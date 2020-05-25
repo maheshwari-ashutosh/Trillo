@@ -33,6 +33,12 @@ Grey dark 3: #999
   --dark-shadow: 0 2rem 6rem rgba(0,0,0,.6);
 }
 
+$bp-largest: 75em; // 1200px
+$bp-large: 68.75em; // 1100px
+$bp-medium: 56.25em; // 900px
+$bp-small: 37.5em; // 600px
+$bp-smallest: 28.125em; // 450px
+
 *{
   padding: 0;
   margin: 0;
@@ -45,8 +51,12 @@ html {
   background-image: linear-gradient(to bottom right , var(--color-primary-light) , var(--color-primary-dark));
   background-size: cover;
   background-repeat: no-repeat;
-  min-height: 100vh;
+  // min-height: 100vh;
   color: var(--color-grey-dark-2);
+
+  @media only screen and (max-width: $bp-large) {
+    font-size: 50%;
+  }
 }
 
 *,

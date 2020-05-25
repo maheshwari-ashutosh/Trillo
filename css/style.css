@@ -39,8 +39,10 @@ html {
   background-image: linear-gradient(to bottom right, var(--color-primary-light), var(--color-primary-dark));
   background-size: cover;
   background-repeat: no-repeat;
-  min-height: 100vh;
   color: var(--color-grey-dark-2); }
+  @media only screen and (max-width: 68.75em) {
+    html {
+      font-size: 50%; } }
 
 *,
 *::before,
@@ -51,8 +53,12 @@ html {
   background-color: #fff;
   max-width: 120rem;
   margin: 10rem auto;
-  min-height: 50rem;
   box-shadow: var(--dark-shadow); }
+  @media only screen and (max-width: 1200px) {
+    .container {
+      margin: 0;
+      max-width: 100%;
+      width: 100%; } }
 
 .header {
   background-color: #fff;
@@ -60,10 +66,18 @@ html {
   justify-content: space-between;
   align-items: center;
   border-bottom: 1px solid var(--color-grey-light-4); }
+  @media only screen and (max-width: 28.125em) {
+    .header {
+      flex-wrap: wrap;
+      align-content: space-around;
+      height: 11rem; } }
 
 .content {
   display: flex;
   background-color: var(--color-grey-light-2); }
+  @media only screen and (max-width: 56.25em) {
+    .content {
+      flex-flow: column; } }
 
 .sidebar {
   flex: 0 0 18%;
@@ -76,12 +90,23 @@ html {
   height: 3.25rem;
   width: 4.5rem;
   margin-left: 2rem; }
+  @media only screen and (max-width: 28.125em) {
+    .header__logo {
+      height: 3rem;
+      width: 4rem;
+      margin-left: 1rem; } }
 
 .searchbar {
   display: flex;
   align-items: stretch;
   flex: 0 1 40%;
   justify-content: center; }
+  @media only screen and (max-width: 28.125em) {
+    .searchbar {
+      order: 1;
+      flex: 0 0 96%;
+      align-self: center;
+      margin: auto; } }
   .searchbar__input {
     padding: 0.5rem 1.5rem;
     font-family: inherit;
@@ -113,6 +138,9 @@ html {
     padding: 0.5rem 2rem;
     cursor: pointer;
     color: white; }
+    @media only screen and (max-width: 28.125em) {
+      .user-nav > * {
+        padding: 0 1rem; } }
   .user-nav > *:hover {
     background-color: var(--color-grey-light-3); }
   .user-nav__icon-box {
@@ -135,6 +163,12 @@ html {
     position: absolute;
     top: 1rem;
     right: 1rem; }
+    @media only screen and (max-width: 28.125em) {
+      .user-nav__notification {
+        height: .6rem;
+        width: .6rem;
+        top: .1rem;
+        right: .1rem; } }
   .user-nav__profile {
     display: flex;
     align-items: center;
@@ -143,6 +177,10 @@ html {
       height: 6rem;
       width: 6rem;
       border-radius: 50%; }
+      @media only screen and (max-width: 28.125em) {
+        .user-nav__profile-pic {
+          height: 5rem;
+          width: 5rem; } }
     .user-nav__profile-name {
       color: black;
       font-size: 1.6rem;
@@ -159,12 +197,34 @@ html {
   font-size: 1.4rem;
   margin-top: 3rem;
   text-transform: uppercase; }
+  @media only screen and (max-width: 56.25em) {
+    .side-nav {
+      display: flex;
+      flex-flow: row;
+      align-items: center;
+      justify-content: space-between;
+      margin: 0; } }
   .side-nav__item {
     padding: 2rem 3rem;
     position: relative;
     cursor: pointer; }
     .side-nav__item:not(:last-child) {
       margin-bottom: 0.5rem; }
+    @media only screen and (max-width: 56.25em) {
+      .side-nav__item {
+        flex: 1;
+        display: flex;
+        justify-content: center; }
+        .side-nav__item:not(:last-child) {
+          margin-bottom: 0; } }
+    @media only screen and (max-width: 37.5em) {
+      .side-nav__item {
+        padding: 1rem 2rem;
+        font-size: 1.2rem;
+        align-self: stretch; } }
+    @media only screen and (max-width: 28.125em) {
+      .side-nav__item {
+        padding: 1rem 1rem; } }
   .side-nav__item::before {
     content: "";
     position: absolute;
@@ -190,15 +250,27 @@ html {
     position: relative;
     z-index: 10;
     backface-visibility: hidden; }
+    @media only screen and (max-width: 37.5em) {
+      .side-nav__link:link, .side-nav__link:visited {
+        flex-flow: column nowrap;
+        justify-content: center;
+        align-items: center; } }
   .side-nav__icon {
     width: 2rem;
     height: 2rem;
     fill: currentColor;
     margin-right: 2rem; }
+    @media only screen and (max-width: 37.5em) {
+      .side-nav__icon {
+        margin-right: 0; } }
 
 .legal {
   text-align: center;
-  font-size: 1.4rem; }
+  font-size: 1.4rem;
+  margin-bottom: 2rem; }
+  @media only screen and (max-width: 56.25em) {
+    .legal {
+      display: none; } }
 
 .gallery {
   display: flex; }
@@ -217,10 +289,18 @@ html {
 .overview {
   display: flex;
   border-bottom: 1px solid var(--color-grey-light-4);
-  align-items: center; }
+  align-items: center;
+  justify-content: space-between; }
   .overview__hotel-name {
     text-transform: uppercase;
     margin: 0 2rem; }
+    @media only screen and (max-width: 37.5em) {
+      .overview__hotel-name {
+        margin: 0 1rem;
+        font-size: 1.2rem; } }
+    @media only screen and (max-width: 28.125em) {
+      .overview__hotel-name {
+        flex: 0 0 20%; } }
   .overview__rating {
     display: flex;
     margin-right: auto; }
@@ -229,21 +309,42 @@ html {
     height: 1.75rem;
     width: 1.75rem;
     fill: var(--color-primary); }
+    @media only screen and (max-width: 28.125em) {
+      .overview__icon--star {
+        height: 1.25rem;
+        width: 1.25rem;
+        flex: 0 0 20%; } }
   .overview__location {
     display: flex;
+    align-items: center;
     color: var(--color-primary);
     cursor: pointer;
     backface-visibility: hidden; }
+    @media only screen and (max-width: 28.125em) {
+      .overview__location {
+        flex: 0 0 25%;
+        align-self: center;
+        justify-content: center; } }
     .overview__location--icon {
       height: 1.75rem;
       width: 1.75rem;
       fill: currentColor;
-      backface-visibility: hidden; }
+      backface-visibility: hidden;
+      padding-bottom: .5rem; }
+      @media only screen and (max-width: 28.125em) {
+        .overview__location--icon {
+          height: 2rem;
+          width: 2rem;
+          padding-bottom: 0;
+          flex: 0 0 30%; } }
     .overview__location--name {
       font-size: 1.4rem;
       padding-bottom: .5rem;
       border-bottom: 1px solid currentColor;
       backface-visibility: hidden; }
+      @media only screen and (max-width: 28.125em) {
+        .overview__location--name {
+          padding-bottom: 0; } }
     .overview__location:active {
       animation: popcontinuous .5s infinite;
       backface-visibility: hidden; }
@@ -258,12 +359,25 @@ html {
     align-self: stretch;
     font-size: 1.2rem;
     color: #fff; }
+    @media only screen and (max-width: 28.125em) {
+      .overview__score {
+        padding: 1rem;
+        margin-left: 1rem; } }
     .overview__score--votes {
       text-transform: uppercase; }
 
 .description {
   display: flex;
   padding: 3rem; }
+  @media only screen and (max-width: 56.25em) {
+    .description {
+      padding: 1.5rem; } }
+  @media only screen and (max-width: 37.5em) {
+    .description {
+      flex-flow: column nowrap; } }
+  @media only screen and (max-width: 28.125em) {
+    .description {
+      padding: .5rem; } }
 
 .details {
   flex: 0 0 60%;
@@ -272,6 +386,12 @@ html {
   background-color: var(--color-grey-light-1);
   box-shadow: 0 2rem 6rem rgba(0, 0, 0, 0.2);
   font-size: 1.4rem; }
+  @media only screen and (max-width: 56.25em) {
+    .details {
+      padding: 1.5rem; } }
+  @media only screen and (max-width: 37.5em) {
+    .details {
+      margin-right: 0; } }
   .details__paragraph {
     font-size: 1.4rem; }
   .details .paragraph:not(:last-of-type) {
@@ -291,7 +411,9 @@ html {
     width: 1.5rem;
     height: 1.5rem;
     -webkit-mask-image: url(../img/chevron-thin-right.svg);
+    mask-image: url(../img/chevron-thin-right.svg);
     -webkit-mask-size: cover;
+    mask-size: cover;
     margin-right: .7rem; }
   .details__item {
     flex: 0 0 50%;
@@ -314,5 +436,159 @@ html {
       .details__recommendation--img:not(:first-child) {
         margin-left: -1rem; }
 
-.reviews {
-  flex: 1; }
+.review {
+  flex: 1;
+  display: flex;
+  flex-flow: column nowrap;
+  font-size: 1.4rem; }
+  @media only screen and (max-width: 37.5em) {
+    .review {
+      flex-flow: row wrap;
+      justify-content: space-between; } }
+  .review__box {
+    padding: 3rem;
+    background-color: #fff;
+    box-shadow: 0 2rem 6rem rgba(0, 0, 0, 0.2);
+    margin-bottom: 2rem;
+    position: relative;
+    margin-bottom: 4rem;
+    overflow: hidden; }
+    @media only screen and (max-width: 56.25em) {
+      .review__box {
+        padding: 1.5rem; } }
+    @media only screen and (max-width: 37.5em) {
+      .review__box {
+        flex: 0 0 48%;
+        margin: 2rem 0; } }
+    @media only screen and (max-width: 28.125em) {
+      .review__box {
+        flex: 0 0 100%; }
+        .review__box:first-child {
+          margin-top: 2rem;
+          margin-bottom: 0; } }
+  .review__text {
+    margin-bottom: 2rem;
+    position: relative;
+    z-index: 10; }
+  .review__box::before {
+    content: "\201C";
+    display: block;
+    position: absolute;
+    font-family: sans-serif;
+    top: -4rem;
+    left: -1rem;
+    font-size: 20rem;
+    color: var(--color-grey-light-3); }
+  .review__more {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    color: var(--color-primary); }
+    @media only screen and (max-width: 37.5em) {
+      .review__more {
+        margin: 0 auto 2rem; } }
+    .review__more span {
+      margin-left: 8px;
+      transition: margin-left .3s;
+      border-bottom: 1px solid currentColor; }
+    .review__more:hover span {
+      margin-left: 12px;
+      color: var(--color-primary-dark); }
+
+.user-box {
+  display: flex;
+  align-items: center; }
+  .user-box__img {
+    height: 5rem;
+    width: 5rem;
+    border-radius: 50%;
+    margin-right: 2rem; }
+  .user-box__name {
+    margin-right: auto;
+    text-transform: uppercase;
+    font-size: 1.6rem;
+    font-weight: 300; }
+  .user-box__date {
+    display: block;
+    font-size: 1.2rem;
+    color: var(--color-grey-dark-3); }
+  .user-box__rating {
+    font-size: 2.2rem;
+    font-weight: 300;
+    color: var(--color-primary); }
+
+.cta {
+  padding: 3rem;
+  text-align: center;
+  background-color: #fff;
+  text-transform: uppercase; }
+  @media only screen and (max-width: 28.125em) {
+    .cta {
+      padding: 2rem; } }
+  .cta__heading {
+    font-size: 2rem;
+    font-weight: 350;
+    margin-bottom: 3rem; }
+    @media only screen and (max-width: 28.125em) {
+      .cta__heading {
+        margin-bottom: 1.5rem;
+        font-size: 1.6rem; } }
+  .cta__book-now {
+    position: relative;
+    overflow: hidden;
+    border-radius: 100px;
+    background-image: linear-gradient(to right, var(--color-primary-light), var(--color-primary-dark));
+    color: #fff;
+    border: none;
+    transition: background-image .3s;
+    outline: none;
+    cursor: pointer;
+    font-size: 2rem; }
+    @media only screen and (max-width: 28.125em) {
+      .cta__book-now {
+        font-size: 1.6rem; } }
+    .cta__book-now > * {
+      display: inline-block;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden; }
+    .cta__book-now .visible {
+      padding: 2rem 7.5rem;
+      transition: transform .3s; }
+      @media only screen and (max-width: 28.125em) {
+        .cta__book-now .visible {
+          padding: 1rem 5.5rem; } }
+    .cta__book-now .invisible {
+      padding: 2rem;
+      position: absolute;
+      top: -100%;
+      transition: top .3s; }
+      @media only screen and (max-width: 28.125em) {
+        .cta__book-now .invisible {
+          padding: 1rem; } }
+    .cta__book-now:hover {
+      background-image: linear-gradient(to left, var(--color-primary-light), var(--color-primary-dark)); }
+    .cta__book-now:hover .visible {
+      transform: translateY(100%); }
+    .cta__book-now:hover .invisible {
+      top: 0; }
+    .cta__book-now:active {
+      animation: popcontinuous .4s infinite; }
+
+.legal-main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  padding: 2rem;
+  background-color: var(--color-grey-dark-1);
+  display: none; }
+  @media only screen and (max-width: 56.25em) {
+    .legal-main {
+      display: flex; } }
+  @media only screen and (max-width: 37.5em) {
+    .legal-main {
+      display: flex;
+      font-size: 1.3rem;
+      padding: 1rem; } }

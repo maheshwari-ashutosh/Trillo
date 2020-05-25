@@ -2,8 +2,13 @@
   background-color: #fff;
   max-width: 120rem;
   margin: 10rem auto;
-  min-height: 50rem;
+  // min-height: 50rem;
   box-shadow: var(--dark-shadow);
+  @media only screen and (max-width: 1200px) {
+    margin: 0;
+    max-width: 100%;
+    width: 100%;
+  }
 }
 
 .header {
@@ -12,11 +17,19 @@
   justify-content: space-between;
   align-items: center;
   border-bottom: 1px solid var(--color-grey-light-4);
+  @media only screen and (max-width: $bp-smallest) {
+    flex-wrap: wrap;
+    align-content: space-around;
+    height: 11rem;
+  }
 }
 
 .content {
   display: flex;
   background-color: var(--color-grey-light-2);
+  @media only screen and (max-width: $bp-medium) {
+    flex-flow: column;
+  }
 }
 
 .sidebar {
