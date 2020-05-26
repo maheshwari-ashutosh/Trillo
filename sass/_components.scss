@@ -67,8 +67,8 @@
     padding: 0.5rem 2rem;
     cursor: pointer;
     color: white;
-    @media only screen and (max-width: $bp-smallest) {
-      padding: 0 1rem;
+    @media only screen and (max-width: $bp-small) {
+      padding: 0.5rem 1rem;
     }
   }
 
@@ -100,11 +100,11 @@
     position: absolute;
     top: 1rem;
     right: 1rem;
-    @media only screen and (max-width: $bp-smallest) {
-      height: .6rem;
-      width: .6rem;
-      top: .1rem;
-      right: .1rem;
+    @media only screen and (max-width: $bp-small) {
+      height: 0.6rem;
+      width: 0.6rem;
+      top: 0.1rem;
+      right: 0.1rem;
     }
   }
 
@@ -112,21 +112,90 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    position: relative;
+    flex-flow: row wrap;
 
     &-pic {
       height: 6rem;
       width: 6rem;
       border-radius: 50%;
-      @media only screen and (max-width: $bp-smallest) {
+      @media only screen and (max-width: $bp-small) {
         height: 5rem;
         width: 5rem;
       }
     }
 
     &-name {
-      color: black;
+      color: var(--color-grey-dark-1);
       font-size: 1.6rem;
       margin-left: 1rem;
+      position: relative;
+
+      @media only screen and (max-width: $bp-small) {
+        font-size: 1.4rem;
+      }
+
+    }
+
+    &--menu {
+      position: absolute;
+      width: 100%;
+      list-style: none;
+      color: var(--color-grey-dark-1);
+      flex: 0 0 100%;
+      font-size: 1.6rem;
+      opacity: 0;
+      visibility: hidden;
+      z-index: 100;
+      top: 100%;
+      left: 0;
+      backdrop-filter: blur(10px);
+      background-color: rgba(0,0,0 , .2);
+      transition: opacity .3s;
+      border-bottom-left-radius: 3px;
+      border-bottom-right-radius: 3px;
+    }
+
+    &:hover &--menu {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    &--item {
+      width: 100%;
+      padding: 1rem 3rem;
+      flex: 1;
+      position: relative;
+      z-index: 10;
+      color: #fff;
+      transition: color .6s;
+      @media only screen and (max-width: $bp-small) {
+        font-size: 1.4rem;
+        padding: 1rem 2rem;
+      }
+    }
+
+    &--item::before{
+      content: "";
+      left: 0;
+      top: 0;
+      display: block;
+      position: absolute;
+      height: 100%;
+      width: 1rem;
+      background-color: var(--color-primary);
+      transform: scaleY(0);
+      transition: transform .2s , width .3s .2s;
+    }
+
+    &--item:hover::before{
+      transform: scaleY(1);
+      width: 100%;
+      z-index: -11;
+    }
+
+    &--item:hover {
+      color: #fff;
     }
   }
 }
@@ -162,7 +231,7 @@
     }
     cursor: pointer;
     @media only screen and (max-width: $bp-medium) {
-      flex:1;
+      flex: 1;
       display: flex;
       justify-content: center;
       & {
@@ -216,7 +285,7 @@
     position: relative;
     z-index: 10;
     backface-visibility: hidden;
-    @media only screen and (max-width: $bp-small){
+    @media only screen and (max-width: $bp-small) {
       flex-flow: column nowrap;
       justify-content: center;
       align-items: center;
@@ -228,7 +297,7 @@
     height: 2rem;
     fill: currentColor;
     margin-right: 2rem;
-    @media only screen and (max-width: $bp-small){
+    @media only screen and (max-width: $bp-small) {
       margin-right: 0;
     }
   }
@@ -275,20 +344,19 @@
   }
 }
 
-
 ////////////////////////
 //// overview
 
 .overview {
-  display: flex;  
+  display: flex;
   border-bottom: 1px solid var(--color-grey-light-4);
   align-items: center;
   justify-content: space-between;
-  
+
   &__hotel-name {
     text-transform: uppercase;
     margin: 0 2rem;
-    
+
     @media only screen and (max-width: $bp-small) {
       margin: 0 1rem;
       font-size: 1.2rem;
@@ -327,13 +395,13 @@
       align-self: center;
       justify-content: center;
     }
-    
+
     &--icon {
       height: 1.75rem;
       width: 1.75rem;
       fill: currentColor;
       backface-visibility: hidden;
-      padding-bottom: .5rem ;
+      padding-bottom: 0.5rem;
       @media only screen and (max-width: $bp-smallest) {
         height: 2rem;
         width: 2rem;
@@ -344,7 +412,7 @@
 
     &--name {
       font-size: 1.4rem;
-      padding-bottom: .5rem ;
+      padding-bottom: 0.5rem;
       border-bottom: 1px solid currentColor;
       backface-visibility: hidden;
       @media only screen and (max-width: $bp-smallest) {
@@ -353,7 +421,7 @@
     }
 
     &:active {
-      animation: popcontinuous .5s infinite;
+      animation: popcontinuous 0.5s infinite;
       backface-visibility: hidden;
     }
   }
@@ -363,7 +431,7 @@
     flex-flow: column nowrap;
     justify-content: center;
     align-items: center;
-    margin-left: 2rem ;
+    margin-left: 2rem;
     padding: 1.5rem;
     background-color: var(--color-primary);
     align-self: stretch;
@@ -374,7 +442,7 @@
       padding: 1rem;
       margin-left: 1rem;
     }
-    
+
     &--votes {
       text-transform: uppercase;
     }
@@ -387,14 +455,14 @@
 .description {
   display: flex;
   padding: 3rem;
-  @media only screen and (max-width:$bp-medium) {
+  @media only screen and (max-width: $bp-medium) {
     padding: 1.5rem;
   }
-  @media only screen and (max-width:$bp-small) {
+  @media only screen and (max-width: $bp-small) {
     flex-flow: column nowrap;
   }
-  @media only screen and (max-width:$bp-smallest) {
-    padding: .5rem;
+  @media only screen and (max-width: $bp-smallest) {
+    padding: 0.5rem;
   }
 }
 
@@ -406,15 +474,15 @@
   margin-right: 3rem;
   padding: 3rem;
   background-color: var(--color-grey-light-1);
-  box-shadow: 0 2rem 6rem rgba(0,0,0,.2);
+  box-shadow: 0 2rem 6rem rgba(0, 0, 0, 0.2);
   font-size: 1.4rem;
 
-  @media only screen and (max-width:$bp-medium) {
+  @media only screen and (max-width: $bp-medium) {
     padding: 1.5rem;
   }
 
-  @media only screen and (max-width:$bp-small) {
-    margin-right:0;
+  @media only screen and (max-width: $bp-small) {
+    margin-right: 0;
   }
 
   &__paragraph {
@@ -437,7 +505,7 @@
     padding: 3rem 0;
   }
 
-  &__item::before{
+  &__item::before {
     content: "";
     display: inline-block;
     background-color: var(--color-primary);
@@ -447,7 +515,7 @@
     mask-image: url(../img/chevron-thin-right.svg);
     -webkit-mask-size: cover;
     mask-size: cover;
-    margin-right: .7rem;
+    margin-right: 0.7rem;
   }
 
   &__item {
@@ -460,7 +528,7 @@
     // margin-bottom: 2.5rem;
     display: flex;
     align-items: center;
-  } 
+  }
 
   &__recommendation {
     display: flex;
@@ -483,7 +551,6 @@
   }
 }
 
-
 //////////////////////
 /////// reviews
 
@@ -493,7 +560,7 @@
   flex-flow: column nowrap;
   font-size: 1.4rem;
 
-  @media only screen and (max-width:$bp-small) {
+  @media only screen and (max-width: $bp-small) {
     flex-flow: row wrap;
     justify-content: space-between;
   }
@@ -501,23 +568,23 @@
   &__box {
     padding: 3rem;
     background-color: #fff;
-    box-shadow: 0 2rem 6rem rgba(0,0,0,.2);
+    box-shadow: 0 2rem 6rem rgba(0, 0, 0, 0.2);
     margin-bottom: 2rem;
     position: relative;
     margin-bottom: 4rem;
     overflow: hidden;
-    @media only screen and (max-width:$bp-medium) {
+    @media only screen and (max-width: $bp-medium) {
       padding: 1.5rem;
     }
-    @media only screen and (max-width:$bp-small) {
+    @media only screen and (max-width: $bp-small) {
       flex: 0 0 48%;
       margin: 2rem 0;
       // margin: 1%;
     }
 
-    @media only screen and (max-width:$bp-smallest) {
+    @media only screen and (max-width: $bp-smallest) {
       flex: 0 0 100%;
-      &:first-child{
+      &:first-child {
         margin-top: 2rem;
         margin-bottom: 0;
       }
@@ -531,14 +598,14 @@
   }
 
   &__box::before {
-      content: "\201C";
-      display: block;
-      position: absolute;
-      font-family: sans-serif;
-      top: -4rem;
-      left: -1rem;
-      font-size: 20rem;
-      color: var(--color-grey-light-3);
+    content: "\201C";
+    display: block;
+    position: absolute;
+    font-family: sans-serif;
+    top: -4rem;
+    left: -1rem;
+    font-size: 20rem;
+    color: var(--color-grey-light-3);
   }
 
   &__more {
@@ -547,13 +614,13 @@
     outline: none;
     cursor: pointer;
     color: var(--color-primary);
-    @media only screen and (max-width:$bp-small) {
+    @media only screen and (max-width: $bp-small) {
       margin: 0 auto 2rem;
     }
 
     span {
       margin-left: 8px;
-      transition: margin-left .3s;
+      transition: margin-left 0.3s;
       border-bottom: 1px solid currentColor;
     }
 
@@ -581,13 +648,13 @@
     font-weight: 300;
   }
 
-  &__date{
+  &__date {
     display: block;
     font-size: 1.2rem;
     color: var(--color-grey-dark-3);
   }
 
-  &__rating{
+  &__rating {
     font-size: 2.2rem;
     font-weight: 300;
     color: var(--color-primary);
@@ -603,7 +670,7 @@
   background-color: #fff;
   text-transform: uppercase;
 
-  @media only screen and (max-width:$bp-smallest) {
+  @media only screen and (max-width: $bp-smallest) {
     padding: 2rem;
   }
 
@@ -611,7 +678,7 @@
     font-size: 2rem;
     font-weight: 350;
     margin-bottom: 3rem;
-    @media only screen and (max-width:$bp-smallest) {
+    @media only screen and (max-width: $bp-smallest) {
       margin-bottom: 1.5rem;
       font-size: 1.6rem;
     }
@@ -621,14 +688,18 @@
     position: relative;
     overflow: hidden;
     border-radius: 100px;
-    background-image: linear-gradient(to right , var(--color-primary-light), var(--color-primary-dark));
+    background-image: linear-gradient(
+      to right,
+      var(--color-primary-light),
+      var(--color-primary-dark)
+    );
     color: #fff;
     border: none;
-    transition: background-image .3s;
+    transition: background-image 0.3s;
     outline: none;
     cursor: pointer;
     font-size: 2rem;
-    @media only screen and (max-width:$bp-smallest) {
+    @media only screen and (max-width: $bp-smallest) {
       font-size: 1.6rem;
     }
 
@@ -641,7 +712,7 @@
 
     .visible {
       padding: 2rem 7.5rem;
-      transition: transform .3s;
+      transition: transform 0.3s;
       @media only screen and (max-width: $bp-smallest) {
         padding: 1rem 5.5rem;
       }
@@ -651,14 +722,18 @@
       padding: 2rem;
       position: absolute;
       top: -100%;
-      transition: top .3s;
+      transition: top 0.3s;
       @media only screen and (max-width: $bp-smallest) {
         padding: 1rem;
       }
     }
 
     &:hover {
-      background-image: linear-gradient(to left , var(--color-primary-light), var(--color-primary-dark));
+      background-image: linear-gradient(
+        to left,
+        var(--color-primary-light),
+        var(--color-primary-dark)
+      );
     }
 
     &:hover .visible {
@@ -670,7 +745,7 @@
     }
 
     &:active {
-      animation: popcontinuous .4s infinite;
+      animation: popcontinuous 0.4s infinite;
     }
   }
 }

@@ -138,9 +138,9 @@ html {
     padding: 0.5rem 2rem;
     cursor: pointer;
     color: white; }
-    @media only screen and (max-width: 28.125em) {
+    @media only screen and (max-width: 37.5em) {
       .user-nav > * {
-        padding: 0 1rem; } }
+        padding: 0.5rem 1rem; } }
   .user-nav > *:hover {
     background-color: var(--color-grey-light-3); }
   .user-nav__icon-box {
@@ -163,28 +163,83 @@ html {
     position: absolute;
     top: 1rem;
     right: 1rem; }
-    @media only screen and (max-width: 28.125em) {
+    @media only screen and (max-width: 37.5em) {
       .user-nav__notification {
-        height: .6rem;
-        width: .6rem;
-        top: .1rem;
-        right: .1rem; } }
+        height: 0.6rem;
+        width: 0.6rem;
+        top: 0.1rem;
+        right: 0.1rem; } }
   .user-nav__profile {
     display: flex;
     align-items: center;
-    justify-content: space-between; }
+    justify-content: space-between;
+    position: relative;
+    flex-flow: row wrap; }
     .user-nav__profile-pic {
       height: 6rem;
       width: 6rem;
       border-radius: 50%; }
-      @media only screen and (max-width: 28.125em) {
+      @media only screen and (max-width: 37.5em) {
         .user-nav__profile-pic {
           height: 5rem;
           width: 5rem; } }
     .user-nav__profile-name {
-      color: black;
+      color: var(--color-grey-dark-1);
       font-size: 1.6rem;
-      margin-left: 1rem; }
+      margin-left: 1rem;
+      position: relative; }
+      @media only screen and (max-width: 37.5em) {
+        .user-nav__profile-name {
+          font-size: 1.4rem; } }
+    .user-nav__profile--menu {
+      position: absolute;
+      width: 100%;
+      list-style: none;
+      color: var(--color-grey-dark-1);
+      flex: 0 0 100%;
+      font-size: 1.6rem;
+      opacity: 0;
+      visibility: hidden;
+      z-index: 100;
+      top: 100%;
+      left: 0;
+      backdrop-filter: blur(10px);
+      background-color: rgba(0, 0, 0, 0.2);
+      transition: opacity .3s;
+      border-bottom-left-radius: 3px;
+      border-bottom-right-radius: 3px; }
+    .user-nav__profile:hover .user-nav__profile--menu {
+      opacity: 1;
+      visibility: visible; }
+    .user-nav__profile--item {
+      width: 100%;
+      padding: 1rem 3rem;
+      flex: 1;
+      position: relative;
+      z-index: 10;
+      color: #fff;
+      transition: color .6s; }
+      @media only screen and (max-width: 37.5em) {
+        .user-nav__profile--item {
+          font-size: 1.4rem;
+          padding: 1rem 2rem; } }
+    .user-nav__profile--item::before {
+      content: "";
+      left: 0;
+      top: 0;
+      display: block;
+      position: absolute;
+      height: 100%;
+      width: 1rem;
+      background-color: var(--color-primary);
+      transform: scaleY(0);
+      transition: transform .2s , width .3s .2s; }
+    .user-nav__profile--item:hover::before {
+      transform: scaleY(1);
+      width: 100%;
+      z-index: -11; }
+    .user-nav__profile--item:hover {
+      color: #fff; }
 
 .sidebar {
   display: flex;
@@ -330,7 +385,7 @@ html {
       width: 1.75rem;
       fill: currentColor;
       backface-visibility: hidden;
-      padding-bottom: .5rem; }
+      padding-bottom: 0.5rem; }
       @media only screen and (max-width: 28.125em) {
         .overview__location--icon {
           height: 2rem;
@@ -339,14 +394,14 @@ html {
           flex: 0 0 30%; } }
     .overview__location--name {
       font-size: 1.4rem;
-      padding-bottom: .5rem;
+      padding-bottom: 0.5rem;
       border-bottom: 1px solid currentColor;
       backface-visibility: hidden; }
       @media only screen and (max-width: 28.125em) {
         .overview__location--name {
           padding-bottom: 0; } }
     .overview__location:active {
-      animation: popcontinuous .5s infinite;
+      animation: popcontinuous 0.5s infinite;
       backface-visibility: hidden; }
   .overview__score {
     display: flex;
@@ -377,7 +432,7 @@ html {
       flex-flow: column nowrap; } }
   @media only screen and (max-width: 28.125em) {
     .description {
-      padding: .5rem; } }
+      padding: 0.5rem; } }
 
 .details {
   flex: 0 0 60%;
@@ -414,7 +469,7 @@ html {
     mask-image: url(../img/chevron-thin-right.svg);
     -webkit-mask-size: cover;
     mask-size: cover;
-    margin-right: .7rem; }
+    margin-right: 0.7rem; }
   .details__item {
     flex: 0 0 50%;
     margin-bottom: 2.5rem;
@@ -490,7 +545,7 @@ html {
         margin: 0 auto 2rem; } }
     .review__more span {
       margin-left: 8px;
-      transition: margin-left .3s;
+      transition: margin-left 0.3s;
       border-bottom: 1px solid currentColor; }
     .review__more:hover span {
       margin-left: 12px;
@@ -541,7 +596,7 @@ html {
     background-image: linear-gradient(to right, var(--color-primary-light), var(--color-primary-dark));
     color: #fff;
     border: none;
-    transition: background-image .3s;
+    transition: background-image 0.3s;
     outline: none;
     cursor: pointer;
     font-size: 2rem; }
@@ -555,7 +610,7 @@ html {
       backface-visibility: hidden; }
     .cta__book-now .visible {
       padding: 2rem 7.5rem;
-      transition: transform .3s; }
+      transition: transform 0.3s; }
       @media only screen and (max-width: 28.125em) {
         .cta__book-now .visible {
           padding: 1rem 5.5rem; } }
@@ -563,7 +618,7 @@ html {
       padding: 2rem;
       position: absolute;
       top: -100%;
-      transition: top .3s; }
+      transition: top 0.3s; }
       @media only screen and (max-width: 28.125em) {
         .cta__book-now .invisible {
           padding: 1rem; } }
@@ -574,7 +629,7 @@ html {
     .cta__book-now:hover .invisible {
       top: 0; }
     .cta__book-now:active {
-      animation: popcontinuous .4s infinite; }
+      animation: popcontinuous 0.4s infinite; }
 
 .legal-main {
   display: flex;
