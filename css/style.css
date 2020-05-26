@@ -99,8 +99,10 @@ html {
 .searchbar {
   display: flex;
   align-items: stretch;
+  flex-flow: row wrap;
   flex: 0 1 40%;
-  justify-content: center; }
+  justify-content: center;
+  position: relative; }
   @media only screen and (max-width: 28.125em) {
     .searchbar {
       order: 1;
@@ -121,6 +123,29 @@ html {
     .searchbar__input:focus {
       width: 100%;
       outline: none; }
+  .searchbar__suggestion-list {
+    list-style: none;
+    flex: 0 0 100%;
+    position: absolute;
+    top: 100%;
+    left: 1rem;
+    width: 100%;
+    z-index: 100;
+    font-size: 1.6rem;
+    backdrop-filter: blur(30px) brightness(60%);
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.4), rgba(255, 255, 255, 0.4));
+    color: #fff;
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: transform .3s;
+    border-radius: 3px; }
+  .searchbar__suggestion--item {
+    padding: 1rem;
+    cursor: pointer; }
+    .searchbar__suggestion--item:not(:last-child) {
+      border-bottom: 1px solid rgba(0, 0, 0, 0.2); }
+  .searchbar__input:focus ~ .searchbar__suggestion-list {
+    transform: scaleY(1); }
   .searchbar__icon-box {
     background-color: var(--color-grey-light-2);
     border: none;
@@ -169,6 +194,60 @@ html {
         width: 0.6rem;
         top: 0.1rem;
         right: 0.1rem; } }
+  .user-nav__chat-list {
+    position: absolute;
+    display: flex;
+    flex-flow: column nowrap;
+    color: #000;
+    width: 300%;
+    top: 100%;
+    left: -100%;
+    backdrop-filter: blur(30px) brightness(70%);
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.4), rgba(255, 255, 255, 0.4));
+    z-index: 100;
+    transition: transform .3s, opacity .1s;
+    transform: scaleY(0);
+    transform-origin: top;
+    opacity: 0; }
+  .user-nav__chat--item {
+    display: flex;
+    flex-flow: row nowrap;
+    padding: 1rem 2rem;
+    justify-content: space-between;
+    align-items: center; }
+    .user-nav__chat--item:not(:last-child) {
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1); }
+    @media only screen and (max-width: 37.5em) {
+      .user-nav__chat--item {
+        padding: 1rem 1rem; } }
+  .user-nav__chat--item > * {
+    transition: transform 0.3s;
+    backface-visibility: hidden; }
+  .user-nav__chat--item:hover > * {
+    transform: scale(1.1); }
+  .user-nav__chat--profile-pic {
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%; }
+  .user-nav__chat--text {
+    display: flex;
+    flex-flow: column nowrap;
+    margin-left: 2rem;
+    margin-right: auto;
+    color: #fff;
+    backface-visibility: hidden; }
+    @media only screen and (max-width: 37.5em) {
+      .user-nav__chat--text {
+        margin-left: 1rem; } }
+  .user-nav__chat--heading {
+    color: var(--color-primary);
+    backface-visibility: hidden; }
+  .user-nav__chat--message {
+    backface-visibility: hidden;
+    color: #fff; }
+  .user-nav__icon-box--message:hover .user-nav__chat-list {
+    transform: scaleY(1);
+    opacity: 1; }
   .user-nav__profile {
     display: flex;
     align-items: center;
@@ -198,19 +277,18 @@ html {
       color: var(--color-grey-dark-1);
       flex: 0 0 100%;
       font-size: 1.6rem;
-      opacity: 0;
-      visibility: hidden;
+      transform: scaleY(0);
+      transform-origin: top;
       z-index: 100;
       top: 100%;
       left: 0;
-      backdrop-filter: blur(10px);
-      background-color: rgba(0, 0, 0, 0.2);
-      transition: opacity .3s;
+      backdrop-filter: blur(30px) brightness(70%);
+      background-image: linear-gradient(to right, rgba(0, 0, 0, 0.4), rgba(255, 255, 255, 0.4));
+      transition: transform 0.3s;
       border-bottom-left-radius: 3px;
       border-bottom-right-radius: 3px; }
     .user-nav__profile:hover .user-nav__profile--menu {
-      opacity: 1;
-      visibility: visible; }
+      transform: scaleY(1); }
     .user-nav__profile--item {
       width: 100%;
       padding: 1rem 3rem;
@@ -218,7 +296,7 @@ html {
       position: relative;
       z-index: 10;
       color: #fff;
-      transition: color .6s; }
+      transition: color 0.6s; }
       @media only screen and (max-width: 37.5em) {
         .user-nav__profile--item {
           font-size: 1.4rem;
@@ -233,7 +311,7 @@ html {
       width: 1rem;
       background-color: var(--color-primary);
       transform: scaleY(0);
-      transition: transform .2s , width .3s .2s; }
+      transition: transform 0.2s, width 0.3s 0.2s; }
     .user-nav__profile--item:hover::before {
       transform: scaleY(1);
       width: 100%;
@@ -332,6 +410,49 @@ html {
   .gallery__picture img {
     width: 100%;
     display: block; }
+  .gallery__picture {
+    position: relative;
+    overflow: hidden; }
+    .gallery__picture--caption {
+      position: absolute;
+      display: flex;
+      flex-flow: column wrap;
+      justify-content: center;
+      align-items: center;
+      background-color: rgba(235, 47, 100, 0.4);
+      backdrop-filter: blur(4px) brightness(60%);
+      filter: sepia(3px);
+      width: 100%;
+      height: 30%;
+      font-size: 1.4rem;
+      transition: transform .4s;
+      backface-visibility: hidden;
+      color: var(--color-grey-light-1);
+      font-weight: 300;
+      font-size: 1.7rem;
+      text-transform: capitalize; }
+      .gallery__picture--caption::after {
+        content: "";
+        display: block;
+        position: absolute;
+        bottom: 0;
+        width: 1rem;
+        height: .5rem;
+        background-color: var(--color-primary);
+        transition: width .3s .3s; }
+        @media only screen and (max-width: 28.125em) {
+          .gallery__picture--caption::after {
+            height: 0; } }
+      @media only screen and (max-width: 37.5em) {
+        .gallery__picture--caption {
+          font-size: 1.4rem; } }
+      @media only screen and (max-width: 28.125em) {
+        .gallery__picture--caption {
+          font-size: 1rem; } }
+  .gallery__picture:hover .gallery__picture--caption {
+    transform: translateY(-100%); }
+  .gallery__picture:hover .gallery__picture--caption::after {
+    width: 100%; }
 
 @keyframes popcontinuous {
   from {
